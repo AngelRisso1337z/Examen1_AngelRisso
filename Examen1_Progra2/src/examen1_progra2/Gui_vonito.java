@@ -5,6 +5,7 @@
  */
 package examen1_progra2;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -54,14 +55,18 @@ public class Gui_vonito extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
+        tf_marca = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jSlider1 = new javax.swing.JSlider();
+        sl_calidad = new javax.swing.JSlider();
         jLabel7 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
+        sp_tamagno = new javax.swing.JSpinner();
+        bt_crearObj = new javax.swing.JButton();
+        cb_color = new javax.swing.JComboBox<>();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        ta_desc = new javax.swing.JTextArea();
+        jLabel9 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         bt_encriptar = new javax.swing.JButton();
@@ -241,21 +246,47 @@ public class Gui_vonito extends javax.swing.JFrame {
 
         jLabel14.setText("tamaño");
 
-        jSlider1.setBackground(new java.awt.Color(0, 255, 0));
-        jSlider1.setMajorTickSpacing(1);
-        jSlider1.setMaximum(10);
-        jSlider1.setMinimum(1);
-        jSlider1.setMinorTickSpacing(1);
-        jSlider1.setPaintLabels(true);
+        sl_calidad.setBackground(new java.awt.Color(0, 255, 0));
+        sl_calidad.setMajorTickSpacing(1);
+        sl_calidad.setMaximum(10);
+        sl_calidad.setMinimum(1);
+        sl_calidad.setMinorTickSpacing(1);
+        sl_calidad.setPaintLabels(true);
 
         jLabel7.setText("Calidad");
+
+        bt_crearObj.setText("Crear Objeto");
+        bt_crearObj.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_crearObjMouseClicked(evt);
+            }
+        });
+
+        cb_color.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "blue", "red", "yellow", "black" }));
+
+        ta_desc.setColumns(20);
+        ta_desc.setRows(5);
+        jScrollPane3.setViewportView(ta_desc);
+
+        jLabel9.setText("Descripcion");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(90, 90, 90)
+                .addComponent(sl_calidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(bt_crearObj)
+                .addGap(277, 277, 277))
+            .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(167, 167, 167)
+                        .addComponent(jLabel7))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(56, 56, 56)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -264,37 +295,47 @@ public class Gui_vonito extends javax.swing.JFrame {
                             .addComponent(jLabel13))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(90, 90, 90)
-                        .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(167, 167, 167)
-                        .addComponent(jLabel7)))
-                .addGap(295, 414, Short.MAX_VALUE))
+                            .addComponent(tf_marca, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(sp_tamagno, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cb_color, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(125, 125, 125))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addGap(208, 208, 208))))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(84, 84, 84)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addComponent(jLabel7)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(87, 87, 87)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel12)
+                            .addComponent(cb_color, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(tf_marca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel14)
+                            .addComponent(sp_tamagno, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel7))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel9)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(97, Short.MAX_VALUE))
+                .addComponent(sl_calidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(bt_crearObj)
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Nuevo Objeto", jPanel4);
@@ -384,7 +425,7 @@ public class Gui_vonito extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 709, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -408,10 +449,10 @@ public class Gui_vonito extends javax.swing.JFrame {
         double altura = 0, peso = 0;
         String estado_civil;
         String sexo = " ", rol = " ", trab = " ";
-        String ocupacion=" ";
-        String horario="";
-        int semanas_laboradas=0;
-        double sueldo=0.0;
+        String ocupacion = " ";
+        String horario = "";
+        int semanas_laboradas = 0;
+        double sueldo = 0.0;
         try {
             nombre = tf_nombre.getText();
             id = Integer.parseInt(tf_identidad.getText());
@@ -433,11 +474,11 @@ public class Gui_vonito extends javax.swing.JFrame {
 
             } else {
                 flag = 2;
-                ocupacion=JOptionPane.showInputDialog("ingrese su rol en la casa");
-                horario=JOptionPane.showInputDialog("ingrese su horario en esta casa");
-                semanas_laboradas=Integer.parseInt(JOptionPane.showInputDialog("ingrese cuantas semanas ha trabajado aqui"));
-                sueldo=Double.parseDouble(JOptionPane.showInputDialog("ingrese su sueldo, por favor, no mienta"));
-            
+                ocupacion = JOptionPane.showInputDialog("ingrese su rol en la casa");
+                horario = JOptionPane.showInputDialog("ingrese su horario en esta casa");
+                semanas_laboradas = Integer.parseInt(JOptionPane.showInputDialog("ingrese cuantas semanas ha trabajado aqui"));
+                sueldo = Double.parseDouble(JOptionPane.showInputDialog("ingrese su sueldo, por favor, no mienta"));
+
             }
 
             if (flag == 1) {
@@ -455,20 +496,25 @@ public class Gui_vonito extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_guardarMouseClicked
 
     private void bt_encriptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_encriptarMouseClicked
-        String encriptar = "",res="";
+        String encriptar = "", res = "";
         encriptar = tf_encript.getText();
-        res=encriptar_c(encriptar);
-        
-        
+        res = encriptar_c(encriptar);
+
+
     }//GEN-LAST:event_bt_encriptarMouseClicked
 
     private void bt_encriptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_encriptarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bt_encriptarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void bt_crearObjMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_crearObjMouseClicked
+        Color color = ((Color) (cb_color.getSelectedItem()));
+        String marca=tf_marca.getText();
+        String descripcion=ta_desc.getText();
+        int calidad =sl_calidad.getValue();
+        int tamano=((int)(sp_tamagno.getValue()));
+    }//GEN-LAST:event_bt_crearObjMouseClicked
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -502,10 +548,12 @@ public class Gui_vonito extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bt_crearObj;
     private javax.swing.JButton bt_encriptar;
     private javax.swing.JButton bt_guardar;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.JComboBox<String> cb_color;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -518,6 +566,7 @@ public class Gui_vonito extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -526,43 +575,45 @@ public class Gui_vonito extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSlider jSlider1;
-    private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JRadioButton rb_empleado;
     private javax.swing.JRadioButton rb_f;
     private javax.swing.JRadioButton rb_familia;
     private javax.swing.JRadioButton rb_m;
+    private javax.swing.JSlider sl_calidad;
     private javax.swing.JSpinner sp_edad;
+    private javax.swing.JSpinner sp_tamagno;
+    private javax.swing.JTextArea ta_desc;
     private javax.swing.JTextArea ta_mensajes;
     private javax.swing.JTextField tf_encript;
     private javax.swing.JTextField tf_estadoCivil;
     private javax.swing.JTextField tf_identidad;
+    private javax.swing.JTextField tf_marca;
     private javax.swing.JTextField tf_nombre;
     // End of variables declaration//GEN-END:variables
 ArrayList<Persona> persona = new ArrayList();
 
     public String encriptar_c(String ne) {
-        int cod=4,val=0; 
+        int cod = 4, val = 0;
         StringBuilder cif = new StringBuilder(ne.length());
         for (int i = 0; i < ne.length(); i++) {
-           
-            val=(int)(ne.charAt(i));
-            val=val+cod%225;
-            cif.append((char)(val));
-        }        
+
+            val = (int) (ne.charAt(i));
+            val = val + cod % 225;
+            cif.append((char) (val));
+        }
         return cif.toString();
     }
-    public String decryptar_c(String ne){
-        StringBuilder decif =new StringBuilder();
-        int cod=4,val=0;
+
+    public String decryptar_c(String ne) {
+        StringBuilder decif = new StringBuilder();
+        int cod = 4, val = 0;
         for (int i = 0; i < ne.length(); i++) {
-            val=(int)(ne.charAt(i));
-            val=val-cod%255;
-            decif.append((char)(val));
+            val = (int) (ne.charAt(i));
+            val = val - cod % 255;
+            decif.append((char) (val));
         }
         return decif.toString();
     }
