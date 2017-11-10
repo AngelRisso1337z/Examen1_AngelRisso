@@ -53,7 +53,7 @@ public class Zapatos extends Objeto{
 
     @Override
     public String toString() {
-        return super.toString()+ "talla=" + talla + ", suela=" + suela + ", confort=" + confort + '}';
+        return super.toString()+ " talla=" + talla + ", suela=" + suela + ", confort=" + confort + '}';
     }
     
 }
