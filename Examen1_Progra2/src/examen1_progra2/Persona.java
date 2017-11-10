@@ -14,13 +14,13 @@ public class Persona {
     public Persona() {
     }
 
-    public Persona(String nombre, int edad, int ID, String sexo, String estado_civil, ArrayList mensajeria) {
+    public Persona(String nombre, int edad, int ID, String sexo, String estado_civil) {
         this.nombre = nombre;
         this.edad = edad;
         this.ID = ID;
         this.sexo = sexo;
         this.estado_civil = estado_civil;
-        this.mensajeria = mensajeria;
+        
     }
 
     public String getNombre() {

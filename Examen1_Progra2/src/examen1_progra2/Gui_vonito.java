@@ -6,6 +6,7 @@
 package examen1_progra2;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -34,8 +35,8 @@ public class Gui_vonito extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         bt_guardar = new javax.swing.JButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        rb_m = new javax.swing.JRadioButton();
+        rb_f = new javax.swing.JRadioButton();
         tf_nombre = new javax.swing.JTextField();
         tf_identidad = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -46,10 +47,10 @@ public class Gui_vonito extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         ta_mensajes = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
+        sp_edad = new javax.swing.JSpinner();
         jLabel6 = new javax.swing.JLabel();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
+        rb_familia = new javax.swing.JRadioButton();
+        rb_empleado = new javax.swing.JRadioButton();
         jLabel11 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -74,12 +75,12 @@ public class Gui_vonito extends javax.swing.JFrame {
             }
         });
 
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setSelected(true);
-        jRadioButton1.setText("Masculino");
+        buttonGroup1.add(rb_m);
+        rb_m.setSelected(true);
+        rb_m.setText("Masculino");
 
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("Femenino");
+        buttonGroup1.add(rb_f);
+        rb_f.setText("Femenino");
 
         jLabel1.setText("Nombre");
 
@@ -97,14 +98,17 @@ public class Gui_vonito extends javax.swing.JFrame {
 
         jLabel6.setText("Edad");
 
-        jRadioButton3.setText("Familia");
-        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup2.add(rb_familia);
+        rb_familia.setText("Familia");
+        rb_familia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton3ActionPerformed(evt);
+                rb_familiaActionPerformed(evt);
             }
         });
 
-        jRadioButton4.setText("Empleado");
+        buttonGroup2.add(rb_empleado);
+        rb_empleado.setSelected(true);
+        rb_empleado.setText("Empleado");
 
         jLabel11.setText("Familia o Empleado?");
 
@@ -128,13 +132,13 @@ public class Gui_vonito extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jRadioButton4)
+                            .addComponent(rb_empleado)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jRadioButton3)
+                                .addComponent(rb_familia)
                                 .addGap(14, 14, 14)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -143,16 +147,16 @@ public class Gui_vonito extends javax.swing.JFrame {
                                     .addComponent(tf_estadoCivil)
                                     .addComponent(tf_nombre)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jRadioButton1)
+                                        .addComponent(rb_m)
                                         .addGap(32, 32, 32)
-                                        .addComponent(jRadioButton2))
+                                        .addComponent(rb_f))
                                     .addComponent(tf_identidad))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
                                 .addComponent(jLabel6)
                                 .addGap(18, 18, 18)
-                                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(sp_edad, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(109, 109, 109)))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(19, 19, 19))))
@@ -178,19 +182,19 @@ public class Gui_vonito extends javax.swing.JFrame {
                             .addComponent(jLabel4))
                         .addGap(8, 8, 8)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jRadioButton1)
-                            .addComponent(jRadioButton2)
+                            .addComponent(rb_m)
+                            .addComponent(rb_f)
                             .addComponent(jLabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(sp_edad, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6)
-                            .addComponent(jRadioButton3)))
+                            .addComponent(rb_familia)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRadioButton4)
+                .addComponent(rb_empleado)
                 .addGap(54, 54, 54)
                 .addComponent(bt_guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -325,12 +329,44 @@ public class Gui_vonito extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
+    private void rb_familiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_familiaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton3ActionPerformed
+    }//GEN-LAST:event_rb_familiaActionPerformed
 
     private void bt_guardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_guardarMouseClicked
-       String nombre = tf_nombre.getText();
+        String nombre;
+        int id,edad,flag=0;
+        String estado_civil;
+        String sexo="";
+        
+        nombre = tf_nombre.getText();
+        id = Integer.parseInt(tf_identidad.getText());
+        estado_civil = tf_estadoCivil.getText();
+        
+        if (rb_m.isSelected()) {
+            sexo="Masculino";
+        }else{
+            sexo="Femenino";
+        }
+        edad=(Integer)sp_edad.getValue();
+        if (rb_familia.isSelected()) {
+            flag=1;
+            String rol=JOptionPane.showInputDialog("ingrese su rol en la casa");
+            String trab=JOptionPane.showInputDialog("ingrese en que trabaja");
+            double altura=Integer.parseInt(JOptionPane.showInputDialog("ingrese su altura"));
+            double peso=Integer.parseInt(JOptionPane.showInputDialog("ingrese su rol en la casa"));
+        }else{
+            
+        }
+        
+        
+        
+        persona.add(new Persona(nombre, edad, id, sexo, estado_civil));
+        if (flag==1) {
+            
+        }else{
+            
+        }
     }//GEN-LAST:event_bt_guardarMouseClicked
 
     /**
@@ -390,20 +426,20 @@ public class Gui_vonito extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JRadioButton rb_empleado;
+    private javax.swing.JRadioButton rb_f;
+    private javax.swing.JRadioButton rb_familia;
+    private javax.swing.JRadioButton rb_m;
+    private javax.swing.JSpinner sp_edad;
     private javax.swing.JTextArea ta_mensajes;
     private javax.swing.JTextField tf_estadoCivil;
     private javax.swing.JTextField tf_identidad;
     private javax.swing.JTextField tf_nombre;
     // End of variables declaration//GEN-END:variables
-ArrayList <Persona> persona=new ArrayList();
+ArrayList<Persona> persona = new ArrayList();
 }
