@@ -8,19 +8,19 @@ public class Familiar extends Persona{
     private String trabajo;
     private double altura;
     private double peso;
-    private ArrayList<Objeto> objeto;
+    public ArrayList<Objeto> objeto;
 
     public Familiar() {
         super();
     }
 
-    public Familiar(String rol, String trabajo, double altura, double peso, ArrayList<Objeto> objeto, String nombre, int edad, int ID, String sexo, String estado_civil) {
+    public Familiar(String rol, String trabajo, double altura, double peso, String nombre, int edad, int ID, String sexo, String estado_civil) {
         super(nombre, edad, ID, sexo, estado_civil);
         this.rol = rol;
         this.trabajo = trabajo;
         this.altura = altura;
         this.peso = peso;
-        this.objeto = objeto;
+        
     }
 
     public String getRol() {

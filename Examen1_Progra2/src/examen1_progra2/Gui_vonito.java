@@ -336,8 +336,11 @@ public class Gui_vonito extends javax.swing.JFrame {
     private void bt_guardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_guardarMouseClicked
         String nombre;
         int id,edad,flag=0;
+        double altura=0, peso=0;
         String estado_civil;
-        String sexo="";
+        String sexo=" ",rol=" ",trab=" ";
+        
+        
         
         nombre = tf_nombre.getText();
         id = Integer.parseInt(tf_identidad.getText());
@@ -350,20 +353,26 @@ public class Gui_vonito extends javax.swing.JFrame {
         }
         edad=(Integer)sp_edad.getValue();
         if (rb_familia.isSelected()) {
-            flag=1;
-            String rol=JOptionPane.showInputDialog("ingrese su rol en la casa");
-            String trab=JOptionPane.showInputDialog("ingrese en que trabaja");
-            double altura=Integer.parseInt(JOptionPane.showInputDialog("ingrese su altura"));
-            double peso=Integer.parseInt(JOptionPane.showInputDialog("ingrese su rol en la casa"));
+            try {
+                flag = 1;
+                rol = JOptionPane.showInputDialog("ingrese su rol en la casa");
+                trab = JOptionPane.showInputDialog("ingrese en que trabaja");
+                altura = Double.parseDouble(JOptionPane.showInputDialog("ingrese su altura"));
+                peso = Double.parseDouble(JOptionPane.showInputDialog("ingrese su rol en la casa"));
+            } catch (NumberFormatException e) {
+                System.out.println("ocurrio un error con un numero, intente de nuevo");
+            }catch(Exception e){
+                System.out.println("ocurrio un error fatal, intentre de nuevo");
+            }
+           
+            
         }else{
+            flag=2;
             
         }
         
-        
-        
-        persona.add(new Persona(nombre, edad, id, sexo, estado_civil));
         if (flag==1) {
-            
+            persona.add(new Familiar(rol, trab, altura, peso, nombre, edad, id, sexo, estado_civil));
         }else{
             
         }
