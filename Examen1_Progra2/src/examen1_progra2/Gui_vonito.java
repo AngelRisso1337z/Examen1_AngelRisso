@@ -7,9 +7,16 @@ package examen1_progra2;
 
 import com.sun.xml.internal.bind.v2.schemagen.xmlschema.Import;
 import java.awt.Color;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -56,6 +63,9 @@ public class Gui_vonito extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        cb_eliminar = new javax.swing.JComboBox<>();
+        jLabel16 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         tf_marca = new javax.swing.JTextField();
@@ -206,32 +216,66 @@ public class Gui_vonito extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Nombre", "Identidad"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(jTable1);
+
+        cb_eliminar.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_eliminarItemStateChanged(evt);
+            }
+        });
+
+        jLabel16.setText("ELIMINAR");
+
+        jButton1.setText("EJECUTAR");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(145, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cb_eliminar, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel16)
+                        .addGap(0, 61, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(107, 107, 107))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(285, 285, 285)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(98, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(jLabel16)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cb_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(30, 30, 30))
         );
 
         jTabbedPane1.addTab("Eliminar persona", jPanel2);
@@ -552,6 +596,9 @@ public class Gui_vonito extends javax.swing.JFrame {
             DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_duenos.getModel();
             modelo.addElement(xe);
             cb_duenos.setModel(modelo);
+             DefaultComboBoxModel modelo2 = (DefaultComboBoxModel) cb_eliminar.getModel();
+            modelo2.addElement(xe);
+            cb_eliminar.setModel(modelo2);
         } catch (NumberFormatException e) {
             System.out.println("ocurrio un error con un numero, intente de nuevo");
         } catch (Exception e) {
@@ -573,7 +620,7 @@ public class Gui_vonito extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_encriptarActionPerformed
 
     private void bt_crearObjMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_crearObjMouseClicked
-
+        String dueno=cb_duenos.getSelectedItem().toString();
         Color color = Color.white;
         int ban = 0;
         switch (cb_color.getSelectedIndex()) {
@@ -592,16 +639,21 @@ public class Gui_vonito extends javax.swing.JFrame {
             default:
                 color = Color.black;
         }
-
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
         String marca = tf_marca.getText();
         String descripcion = ta_desc.getText();
         int calidad = sl_calidad.getValue();
         int tamano = ((int) (sp_tamagno.getValue()));
-        String suela= "";
-        String material="";
-        String pais="";
-        int talla=0,confort=0;
-        
+        String suela = "";
+        String material = "";
+        String pais = "";
+        int precio = 0;
+        int talla = 0, confort = 0;
+        int tiempo_devida = 0;
+        String area = "";
+        String instrucciones = "";
+        Date fecha=new Date();
+
         if (rb_zapatos.isSelected()) {
             ban = 1;
         }
@@ -612,33 +664,55 @@ public class Gui_vonito extends javax.swing.JFrame {
             ban = 3;
         }
         if (ban == 1) {
-            suela=JOptionPane.showInputDialog("Ingrese la suela");
-            talla=Integer.parseInt(JOptionPane.showInputDialog("Ingrese la talla"));
-            confort=Integer.parseInt(JOptionPane.showInputDialog("Ingrese el confort"));
-            if (confort<1||confort>10) {
-                confort=Integer.parseInt(JOptionPane.showInputDialog("Ingrese el cofort, de 1 a 10"));
+            suela = JOptionPane.showInputDialog("Ingrese la suela");
+            talla = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la talla"));
+            confort = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el confort"));
+            precio = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el confort"));
+            if (confort < 1 || confort > 10) {
+                confort = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el cofort, de 1 a 10"));
             }
-            objetos.add(new Zapatos(tamano, suela, confort, color, descripcion, marca, tamano, calidad, talla, suela));
+            objetos.add(new Zapatos(talla, suela, confort, color, descripcion, marca, tamano, calidad, precio, dueno));
         } else if (ban == 2) {
-            talla=Integer.parseInt(JOptionPane.showInputDialog("Ingrese la talla"));
-            material=JOptionPane.showInputDialog("Ingrese el material");
-            pais=JOptionPane.showInputDialog("Ingrese el pais de origen");
-            objetos.add(new Ropa(talla, material, pais, color, descripcion, marca, tamano, calidad, tamano, suela));
+            talla = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la talla"));
+            material = JOptionPane.showInputDialog("Ingrese el material");
+            pais = JOptionPane.showInputDialog("Ingrese el pais de origen");
+            objetos.add(new Ropa(talla, material, pais, color, descripcion, marca, tamano, calidad, precio, dueno));
         } else {
+            tiempo_devida = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el tiempo de vida de este objeto"));
+            area = JOptionPane.showInputDialog("Ingrese el area a donde pertenece, cocina,sala o habitacion");
+            while (!area.equals("cocina") && !area.equals("sa;a") && !area.equals("habitacion")) {
+                area = JOptionPane.showInputDialog("Ingrese el area a donde pertenece, cocina,sala o habitacion");
+            }
+            instrucciones = JOptionPane.showInputDialog("Ingrese las instrucciones, si las tiene");
+            try {
+                fecha = df.parse(area = JOptionPane.showInputDialog("Ingrese cuando se compro dicho objeto, en dd/MM/yyyy"));
+            } catch (ParseException ex) {
+                System.out.println("problema con el parseo de date");
 
+            }
+            objetos.add(new Objetos_del_Hogar(tiempo_devida, area, instrucciones, fecha, color, descripcion, marca, tamano, calidad, precio, dueno));
         }
 
-        
 
     }//GEN-LAST:event_bt_crearObjMouseClicked
 
     private void cb_duenosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_duenosItemStateChanged
-
+        if (evt.getStateChange()>=1) {
+            Persona p=(Persona)cb_eliminar.getSelectedItem();
+            Object [] newRow={p.getNombre(),p.getID()};
+            DefaultTableModel modelo=(DefaultTableModel)jTable1.getModel();
+            modelo.addRow(newRow);
+            jTable1.setModel(modelo);
+        }
     }//GEN-LAST:event_cb_duenosItemStateChanged
 
     private void rb_ropaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_ropaActionPerformed
 
     }//GEN-LAST:event_rb_ropaActionPerformed
+
+    private void cb_eliminarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_eliminarItemStateChanged
+        
+    }//GEN-LAST:event_cb_eliminarItemStateChanged
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -681,6 +755,8 @@ public class Gui_vonito extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.JComboBox<String> cb_color;
     private javax.swing.JComboBox<String> cb_duenos;
+    private javax.swing.JComboBox<String> cb_eliminar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -688,6 +764,7 @@ public class Gui_vonito extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
