@@ -73,7 +73,7 @@ public class Persona {
 
     @Override
     public String toString() {
-        return "nombre=" + nombre + ", edad=" + edad + ", sexo= " + sexo + ", estado civil= " + estado_civil ;
+        return "nombre=" + nombre  ;
     }
     
 }

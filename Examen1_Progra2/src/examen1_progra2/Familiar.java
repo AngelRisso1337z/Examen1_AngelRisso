@@ -8,7 +8,7 @@ public class Familiar extends Persona{
     private String trabajo;
     private double altura;
     private double peso;
-    public ArrayList<Objeto> objeto;
+     ArrayList<Objeto> objeto;
 
     public Familiar() {
         super();
