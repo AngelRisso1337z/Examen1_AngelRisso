@@ -598,6 +598,8 @@ public class Gui_vonito extends javax.swing.JFrame {
         int calidad = sl_calidad.getValue();
         int tamano = ((int) (sp_tamagno.getValue()));
         String suela= "";
+        String material="";
+        String pais="";
         int talla=0,confort=0;
         
         if (rb_zapatos.isSelected()) {
@@ -616,9 +618,12 @@ public class Gui_vonito extends javax.swing.JFrame {
             if (confort<1||confort>10) {
                 confort=Integer.parseInt(JOptionPane.showInputDialog("Ingrese el cofort, de 1 a 10"));
             }
-            
+            objetos.add(new Zapatos(tamano, suela, confort, color, descripcion, marca, tamano, calidad, talla, suela));
         } else if (ban == 2) {
-            
+            talla=Integer.parseInt(JOptionPane.showInputDialog("Ingrese la talla"));
+            material=JOptionPane.showInputDialog("Ingrese el material");
+            pais=JOptionPane.showInputDialog("Ingrese el pais de origen");
+            objetos.add(new Ropa(talla, material, pais, color, descripcion, marca, tamano, calidad, tamano, suela));
         } else {
 
         }
