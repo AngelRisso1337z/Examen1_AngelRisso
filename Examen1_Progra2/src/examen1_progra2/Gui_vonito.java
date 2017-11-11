@@ -81,6 +81,9 @@ public class Gui_vonito extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         cb_modi = new javax.swing.JComboBox<>();
         jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        rb_familia1 = new javax.swing.JRadioButton();
+        rb_empleado1 = new javax.swing.JRadioButton();
         jPanel4 = new javax.swing.JPanel();
         tf_marca = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
@@ -143,7 +146,6 @@ public class Gui_vonito extends javax.swing.JFrame {
         });
 
         buttonGroup2.add(rb_empleado);
-        rb_empleado.setSelected(true);
         rb_empleado.setText("Empleado");
 
         jLabel11.setText("Familia o Empleado?");
@@ -291,7 +293,7 @@ public class Gui_vonito extends javax.swing.JFrame {
                         .addComponent(jLabel16)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cb_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addComponent(bt_eliminarP)
                 .addGap(30, 30, 30))
         );
@@ -322,27 +324,47 @@ public class Gui_vonito extends javax.swing.JFrame {
 
         jLabel21.setText("Edad");
 
+        cb_modi.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_modiItemStateChanged(evt);
+            }
+        });
+
         jLabel22.setText("Personas");
+
+        jLabel23.setText("Familia o Empleado?");
+
+        buttonGroup2.add(rb_familia1);
+        rb_familia1.setSelected(true);
+        rb_familia1.setText("Familia");
+        rb_familia1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rb_familia1ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup2.add(rb_empleado1);
+        rb_empleado1.setText("Empleado");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cb_modi, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel22))
-                .addGap(30, 30, 30)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel20)
-                            .addComponent(jLabel19)
-                            .addComponent(jLabel17)
-                            .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(48, 48, 48)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cb_modi, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel22))
+                        .addGap(30, 30, 30)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel20)
+                                    .addComponent(jLabel19)
+                                    .addComponent(jLabel17)
+                                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(tf_estadoCivil1)
@@ -353,19 +375,26 @@ public class Gui_vonito extends javax.swing.JFrame {
                                         .addComponent(rb_f1))
                                     .addComponent(tf_identidad1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(98, 98, 98)
+                                .addGap(94, 94, 94)
+                                .addComponent(bt_guardar1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(188, 188, 188)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(rb_empleado1)
+                                    .addComponent(rb_familia1))
+                                .addGap(109, 109, 109)
                                 .addComponent(jLabel21)
                                 .addGap(26, 26, 26)
-                                .addComponent(sp_edad1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(94, 94, 94)
-                        .addComponent(bt_guardar1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(220, Short.MAX_VALUE))
+                                .addComponent(sp_edad1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel23))))
+                .addContainerGap(208, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(26, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tf_nombre1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20)
@@ -384,11 +413,17 @@ public class Gui_vonito extends javax.swing.JFrame {
                     .addComponent(rb_m1)
                     .addComponent(rb_f1)
                     .addComponent(jLabel17))
-                .addGap(48, 48, 48)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(sp_edad1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel21))
-                .addGap(84, 84, 84)
+                .addGap(32, 32, 32)
+                .addComponent(jLabel23)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(sp_edad1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel21))
+                    .addComponent(rb_familia1))
+                .addGap(18, 18, 18)
+                .addComponent(rb_empleado1)
+                .addGap(51, 51, 51)
                 .addComponent(bt_guardar1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
         );
@@ -434,7 +469,6 @@ public class Gui_vonito extends javax.swing.JFrame {
         jLabel10.setText("Dueño");
 
         buttonGroup3.add(rb_zapatos);
-        rb_zapatos.setSelected(true);
         rb_zapatos.setText("Zapatos");
 
         buttonGroup3.add(rb_ropa);
@@ -542,7 +576,7 @@ public class Gui_vonito extends javax.swing.JFrame {
                         .addComponent(rb_ropa)
                         .addGap(18, 18, 18)
                         .addComponent(rb_odh)))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Nuevo Objeto", jPanel4);
@@ -555,7 +589,7 @@ public class Gui_vonito extends javax.swing.JFrame {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 374, Short.MAX_VALUE)
+            .addGap(0, 383, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Modificar objeto", jPanel5);
@@ -621,7 +655,7 @@ public class Gui_vonito extends javax.swing.JFrame {
                         .addComponent(tf_encript, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(bt_encriptar)))
-                .addContainerGap(134, Short.MAX_VALUE))
+                .addContainerGap(143, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("tab6", jPanel6);
@@ -637,9 +671,9 @@ public class Gui_vonito extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jTabbedPane1)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(20, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -701,6 +735,9 @@ public class Gui_vonito extends javax.swing.JFrame {
             DefaultComboBoxModel modelo2 = (DefaultComboBoxModel) cb_eliminar.getModel();
             modelo2.addElement(xe);
             cb_eliminar.setModel(modelo2);
+            DefaultComboBoxModel modelo3 = (DefaultComboBoxModel) cb_modi.getModel();
+            modelo.addElement(xe);
+            cb_modi.setModel(modelo3);
         } catch (NumberFormatException e) {
             System.out.println("ocurrio un error con un numero, intente de nuevo");
         } catch (Exception e) {
@@ -831,17 +868,17 @@ public class Gui_vonito extends javax.swing.JFrame {
         int semanas_laboradas = 0;
         double sueldo = 0.0;
         try {
-            nombre = tf_nombre.getText();
-            id = Integer.parseInt(tf_identidad.getText());
-            estado_civil = tf_estadoCivil.getText();
+            nombre = tf_nombre1.getText();
+            id = Integer.parseInt(tf_identidad1.getText());
+            estado_civil = tf_estadoCivil1.getText();
 
-            if (rb_m.isSelected()) {
+            if (rb_m1.isSelected()) {
                 sexo = "Masculino";
             } else {
                 sexo = "Femenino";
             }
-            edad = (Integer) sp_edad.getValue();
-            if (rb_familia.isSelected()) {
+            edad = (Integer) sp_edad1.getValue();
+            if (rb_familia1.isSelected()) {
 
                 flag = 1;
                 rol = JOptionPane.showInputDialog("ingrese su rol en la casa");
@@ -863,10 +900,8 @@ public class Gui_vonito extends javax.swing.JFrame {
             } else {
                 persona.set(cb_modi.getSelectedIndex(), new Personal(ocupacion, horario, semanas_laboradas, sueldo, nombre, edad, id, sexo, estado_civil));
             }
-            Persona xe = new Persona(nombre, edad, id, sexo, estado_civil);
-            DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_modi.getModel();
-            modelo.addElement(xe);
-            cb_modi.setModel(modelo);
+            
+            
         } catch (NumberFormatException e) {
             System.out.println("ocurrio un error con un numero, intente de nuevo");
         } catch (Exception e) {
@@ -876,6 +911,14 @@ public class Gui_vonito extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_bt_guardar1MouseClicked
+
+    private void rb_familia1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_familia1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rb_familia1ActionPerformed
+
+    private void cb_modiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_modiItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_modiItemStateChanged
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -937,6 +980,7 @@ public class Gui_vonito extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -956,9 +1000,11 @@ public class Gui_vonito extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JRadioButton rb_empleado;
+    private javax.swing.JRadioButton rb_empleado1;
     private javax.swing.JRadioButton rb_f;
     private javax.swing.JRadioButton rb_f1;
     private javax.swing.JRadioButton rb_familia;
+    private javax.swing.JRadioButton rb_familia1;
     private javax.swing.JRadioButton rb_m;
     private javax.swing.JRadioButton rb_m1;
     private javax.swing.JRadioButton rb_odh;
